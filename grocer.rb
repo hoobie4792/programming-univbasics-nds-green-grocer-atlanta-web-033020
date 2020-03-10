@@ -39,7 +39,7 @@ end
 
 def add_coupon(item, coupon)
   item[:item] = item[:item] + ' W/COUPON'
-  item[:price] = coupon[:cost].to_f / coupon[:num]
+  item[:price] = coupon[:cost] / coupon[:num]
   item[:count] = coupon[:num]
   
   return item
