@@ -37,18 +37,6 @@ def consolidate_cart(cart)
   return arr
 end
 
-def add_coupon(cart, index, coupon)
-  cart[index][:count] -= coupon[:num]
-  item_with_coupon = {
-    item: "#{cart[index][:item]} W/COUPON",
-    price: coupon[:cost] / coupon[:num],
-    count: coupon[:num],
-    clearance: cart[index][:clearance]
-  }
-  cart.push(item_with_coupon)
-  return cart
-end
-
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
@@ -60,7 +48,14 @@ def apply_coupons(cart, coupons)
     item = find_item_by_name_in_collection(coupons[index][:item], cart)
     
     if item and item[:count] >= coupon[:num]
-      cart = apply_coupon(cart, index, coupon)
+      cart[index][:count] -= coupon[:num]
+      item_with_coupon = {
+        item: "#{cart[index][:item]} W/COUPON",
+        price: coupon[:cost] / coupon[:num],
+        count: coupon[:num],
+        clearance: cart[index][:clearance]
+  }
+  cart.push(item_with_coupon)
     end
     
     index += 1
