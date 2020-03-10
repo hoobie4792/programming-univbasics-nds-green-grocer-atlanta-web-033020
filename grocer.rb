@@ -37,22 +37,13 @@ def consolidate_cart(cart)
   return arr
 end
 
-def mk_coupon_hash(c)
-  rounded_unit_price = (c[:cost].to_f * 1.0 / c[:num]).round(2)
-  {
-    :item => "#{c[:item]} W/COUPON",
-    :price => rounded_unit_price,
-    :count => c[:num]
-  }
-end
-
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
   
   index = 0
-  while index < coupons.count do
+  while index < coupons.length do
     item = find_item_by_name_in_collection(coupons[index][:item], cart)
 
     if item and item[:count] >= coupons[index][:num]
@@ -80,6 +71,10 @@ def apply_clearance(cart)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  
+  index = 0
+  
+  while index < cart.length
 end
 
 def checkout(cart, coupons)
