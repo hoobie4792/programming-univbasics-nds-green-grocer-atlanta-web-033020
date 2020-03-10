@@ -37,6 +37,13 @@ def consolidate_cart(cart)
   return arr
 end
 
+def apply_coupon_to_cart(matching_item, coupon, cart)
+  matching_item[:count] -= coupon[:num]
+  item_with_coupon = mk_coupon_hash(coupon)
+  item_with_coupon[:clearance] = matching_item[:clearance]
+  cart << item_with_coupon
+end
+
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
