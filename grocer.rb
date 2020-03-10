@@ -46,7 +46,7 @@ def mk_coupon_hash(c)
   }
 end
 
-def apply_coupon_to_cart(item, coupon, cart)
+def apply_coupon(item, coupon, cart)
   item[:count] -= coupon[:num]
   item_with_coupon = {
     item: item[:item] + " W/COUPON",
@@ -67,7 +67,7 @@ def apply_coupons(cart, coupons)
     item = find_item_by_name_in_collection(coupons[index][:item], cart)
 
     if item and item[:count] >= coupons[index][:num]
-      apply_coupon_to_cart(item, coupons[index], cart)
+      apply_coupon(item, coupons[index], cart)
     end
     index += 1
   end
