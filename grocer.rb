@@ -42,24 +42,10 @@ def apply_coupons(cart, coupons)
   #
   # REMEMBER: This method **should** update cart
   
-  index = 0
-  
-  while index < coupons.count do
-    item = find_item_by_name_in_collection(coupons[index][:item], cart)
-    
-    if item and item[:count] >= coupon[:num]
-      cart[index][:count] -= coupon[:num]
-      item_with_coupon = {
-        item: "#{cart[index][:item]} W/COUPON",
-        price: coupon[:cost] / coupon[:num],
-        count: coupon[:num],
-        clearance: cart[index][:clearance]
-  }
-  cart.push(item_with_coupon)
-    end
-    
-    index += 1
-  end
+  matching_item[:count] -= coupon[:num]
+  item_with_coupon = mk_coupon_hash(coupon)
+  item_with_coupon[:clearance] = matching_item[:clearance]
+  cart << item_with_coupon
   
   return cart
 end
