@@ -60,12 +60,10 @@ def apply_coupons(cart, coupons)
   
   index = 0
   while index < coupons.count do
-    coupon = coupons[index]
-    item = find_item_by_name_in_collection(coupon[:item], cart)
-    count_is_big_enough_to_apply = !!item && item[:count] >= coupon[:num]
+    item = find_item_by_name_in_collection(coupons[index][:item], cart)
 
-    if item and item[:count] >= coupon[:num]
-      apply_coupon_to_cart(item, coupon, cart)
+    if item and item[:count] >= coupons[index][:num]
+      apply_coupon_to_cart(item, coupons[index], cart)
     end
     index += 1
   end
