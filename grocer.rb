@@ -46,18 +46,6 @@ def mk_coupon_hash(c)
   }
 end
 
-def apply_coupon(item, coupon, cart)
-  item[:count] -= coupon[:num]
-  item_with_coupon = {
-    item: item[:item] + " W/COUPON",
-    price: coupon[:cost] / coupon[:num],
-    count: coupon[:num],
-    clearance: item[:clearance]
-  }
-  cart.push(item_with_coupon)
-  return cart
-end
-
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
@@ -73,6 +61,18 @@ def apply_coupons(cart, coupons)
     index += 1
   end
 
+  return cart
+end
+
+def apply_coupon(item, coupon, cart)
+  item[:count] -= coupon[:num]
+  item_with_coupon = {
+    item: item[:item] + " W/COUPON",
+    price: coupon[:cost] / coupon[:num],
+    count: coupon[:num],
+    clearance: item[:clearance]
+  }
+  cart.push(item_with_coupon)
   return cart
 end
 
