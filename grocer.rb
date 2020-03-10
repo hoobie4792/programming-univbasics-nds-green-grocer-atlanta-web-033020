@@ -49,7 +49,7 @@ end
 def apply_coupon_to_cart(item, coupon, cart)
   item[:count] -= coupon[:num]
   item_with_coupon = mk_coupon_hash(coupon)
-  item_with_coupon[:clearance] = matching_item[:clearance]
+  item_with_coupon[:clearance] = item[:clearance]
   cart << item_with_coupon
 end
 
