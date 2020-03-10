@@ -41,6 +41,22 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  
+  index = 0
+  arr = []
+  
+  while index < cart.length do
+    item_name = cart[index][:item]
+    coupon = find_item_by_name_in_collection(item_name, coupons)
+    if coupon
+      while cart[index][:count] >= coupon[:num] do
+        if 
+        cart[index][:count] -= coupon[:num]
+      end
+    end
+    
+    index += 1
+  end
 end
 
 def apply_clearance(cart)
