@@ -57,7 +57,7 @@ def apply_coupons(cart, coupons)
     item_name = cart[index][:item]
     coupon = find_item_by_name_in_collection(item_name, coupons)
     if coupon
-      if cart[index][:count] >= coupon[:num] do
+      if cart[index][:count] >= coupon[:num]
         arr.push(add_coupon(cart[index], coupon))
         cart[index][:count] -= coupon[:num]
       end
