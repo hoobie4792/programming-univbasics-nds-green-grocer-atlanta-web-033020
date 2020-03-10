@@ -55,6 +55,7 @@ def apply_coupon(item, coupon, cart)
     clearance: item[:clearance]
   }
   cart.push(item_with_coupon)
+  return cart
 end
 
 def apply_coupons(cart, coupons)
