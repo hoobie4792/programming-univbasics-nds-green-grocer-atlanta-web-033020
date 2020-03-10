@@ -107,7 +107,9 @@ def checkout(cart, coupons)
     i += 1
   end
 
-  total >= 100 ? total * (1.0 - BIG_PURCHASE_DISCOUNT_RATE) : total
+  total >= 100 ? total * 0.9: total
+  
+  return total
 end
 
 # Don't forget, you can make methods to make your life easy!
