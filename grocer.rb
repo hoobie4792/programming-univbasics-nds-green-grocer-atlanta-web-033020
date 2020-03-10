@@ -98,9 +98,9 @@ def checkout(cart, coupons)
   total = 0
   i = 0
 
-  cart = consolidate_cart(cart)
-  apply_coupons(cart, coupons)
-  apply_clearance(cart)
+  ccart = consolidate_cart(cart)
+  apply_coupons(ccart, coupons)
+  apply_clearance(ccart)
 
   while i < ccart.length do
     total += items_total_cost(ccart[i])
