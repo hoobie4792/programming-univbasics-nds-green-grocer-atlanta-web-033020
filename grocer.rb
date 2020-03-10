@@ -41,7 +41,7 @@ def add_coupon(cart, index, coupon)
   cart[index][:count] -= coupon[:num]
   item_with_coupon = {
     item: "#{cart[index][:item]} W/COUPON"
-    price: coupon[:cost] / coupon[:num]
+    price: coupon[:cost].to_f / coupon[:num]
     count: coupon[:num]
     clearance: cart[index][:clearance]
   }
