@@ -95,14 +95,14 @@ def checkout(cart, coupons)
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
   
+  index = 0
   total = 0
-  i = 0
 
-  cart = consolidate_cart(cart)
-  apply_coupons(cart, coupons)
-  apply_clearance(cart)
+  consolidated_cart = consolidate_cart(cart)
+  apply_coupons(consolidated_cart, coupons)
+  apply_clearance(consolidated_cart)
 
-  while i < ccart.length do
+  while index < consolidated_cart.length do
     total += items_total_cost(ccart[i])
     i += 1
   end
