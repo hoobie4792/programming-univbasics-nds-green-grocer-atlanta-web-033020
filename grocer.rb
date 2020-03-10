@@ -38,7 +38,7 @@ def consolidate_cart(cart)
 end
 
 def add_coupon(item, coupon)
-  item[:item] = 'item[:item] + ' W/COUPON''
+  item[:item] = item[:item] + ' W/COUPON'
   item[:price] = coupon[:cost] / coupon[:num]
   item[:count] = coupon[:num]
   
