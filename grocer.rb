@@ -95,21 +95,23 @@ def checkout(cart, coupons)
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
   
-  index = 0
   total = 0
-  
-  cart = consolidate_cart(cart)
-  cart = apply_coupons(cart, coupons)
-  cart = apply_clearance(cart)
-  
-  while index < cart.length do
-    total += cart[index][:price]
-    index += 1
+  i = 0
+
+  ccart = consolidate_cart(cart)
+  apply_coupons(ccart, coupons)
+  apply_clearance(ccart)
+
+  while i < ccart.length do
+    total += items_total_cost(ccart[i])
+    i += 1
   end
-  
-  if total > 100
-    total = (0.9 * total).round(2)
-  end
-  
-  return total
+
+  total >= 100 ? total * (1.0 - BIG_PURCHASE_DISCOUNT_RATE) : total
+end
+
+# Don't forget, you can make methods to make your life easy!
+
+def items_total_cost(i)
+  i[:count] * i[:price]
 end
